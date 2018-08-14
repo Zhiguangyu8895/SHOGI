@@ -62,3 +62,242 @@ var ta,tb;//取られる駒の段筋
 var komaget;//boxに入れる駒
 var komacheck = [];//駒が行けるマス、配列
 var basertable;//詰んできた駒の元のtable
+
+//駒がクリックされたら
+
+$('#tbody-board').on('click','img',function(){
+	if ($(this).parents('td').css('background-color')!='rgb(153, 217, 234)'){//背景が青でない、移動元の駒
+		koma = $(this).attr('title');//駒名
+		komatable = $(this).parents('table').attr('id');//駒の位置はboxかboardか
+		
+		if (komatable == 'tbody-board'){//board上の駒、駒の移動ルールに従い移動する
+			a = $('#tbody-board tr').index($(this).parents('tr'));//段
+			b = $('#tbody-board tr:eq('+a+') td').index($(this).parents('td'));//筋
+			komalocation = $('#tbody-board tr:eq('+a+') td:eq('+b+')');
+		}
+		
+		
+		$('td').css('background','rgb(239, 228, 176)');//前まで変えた背景色を全部リセット
+		$(this).parents('td').css('background','rgb(237, 28, 36)');//クリックした駒の背景を赤に
+		
+		if (turn==0){//玉側
+			if (koma=='kyousha0a'){
+				kyousha0a();
+			} else if (koma == 'keima0a' ){	
+				keima0a();
+			} else if (koma == 'gin0a' ){	
+				gin0a();
+			} else if (koma == 'kin0'){
+				kin0();
+			} else if (koma == 'ou0'){
+				ou0();
+			} else if (koma == 'hisha0a'){
+				hisha0a();
+			} else if (koma == 'kaku0a'){
+				kaku0a();
+			} else if (koma == 'hu0a'){
+				hu0a();
+			} else if (koma=='kyousha0b'){
+				kyousha0b();
+			} else if (koma == 'keima0b' ){	
+				keima0b();
+			} else if (koma == 'gin0b' ){	
+				gin0b();
+			} else if (koma == 'hisha0b'){
+				hisha0b();
+			} else if (koma == 'kaku0b'){
+				kaku0b();
+			} else if (koma == 'hu0b'){
+					hu0b();
+			} 
+		} else if (turn==1){//王側
+			if (koma=='kyousha1a'){
+				kyousha1a();
+			} else if (koma == 'keima1a' ){	
+				keima1a();
+			} else if (koma == 'gin1a' ){	
+				gin1a();
+			} else if (koma == 'kin1'){
+				kin1();
+			} else if (koma == 'ou1'){
+				ou1();
+			} else if (koma == 'hisha1a'){
+				hisha1a();
+			} else if (koma == 'kaku1a'){
+				kaku1a();
+			} else if (koma == 'hu1a'){
+				hu1a();
+			} else if (koma=='kyousha1b'){
+				kyousha1b();
+			} else if (koma == 'keima1b' ){	
+				keima1b();
+			} else if (koma == 'gin1b' ){	
+				gin1b();
+			} else if (koma == 'hisha1b'){
+				hisha1b();
+			} else if (koma == 'kaku1b'){
+				kaku1b();
+			} else if (koma == 'hu1b'){
+				hu1b();
+			} 
+		}
+	}
+})
+
+//箱から打つ
+$('#tbody-box0').on('click','img',function(){
+	if ($(this).parents('td').css('background-color')!='rgb(153, 217, 234)'){//背景が青でない、移動元の駒
+		koma = $(this).attr('title');//駒名
+		komatable = $(this).parents('table').attr('id');//駒の位置はboxかboardか
+
+		if (komatable == 'tbody-board'){//board上の駒、駒の移動ルールに従い移動する
+			a = $('#tbody-board tr').index($(this).parents('tr'));//段
+			b = $('#tbody-board tr:eq('+a+') td').index($(this).parents('td'));//筋
+			komalocation = $('#tbody-board tr:eq('+a+') td:eq('+b+')');
+		}
+
+		$('td').css('background','rgb(239, 228, 176)');//前まで変えた背景色を全部リセット
+		$(this).parents('td').css('background','rgb(237, 28, 36)');//クリックした駒の背景を赤に
+
+		if (turn==0){//玉側
+			if (koma=='kyousha0a'){
+				kyousha0a();
+			} else if (koma == 'keima0a' ){	
+				keima0a();
+			} else if (koma == 'gin0a' ){	
+				gin0a();
+			} else if (koma == 'kin0'){
+				kin0();
+			} else if (koma == 'ou0'){
+				ou0();
+			} else if (koma == 'hisha0a'){
+				hisha0a();
+			} else if (koma == 'kaku0a'){
+				kaku0a();
+			} else if (koma == 'hu0a'){
+				hu0a();
+			} else if (koma=='kyousha0b'){
+				kyousha0b();
+			} else if (koma == 'keima0b' ){	
+				keima0b();
+			} else if (koma == 'gin0b' ){	
+				gin0b();
+			} else if (koma == 'hisha0b'){
+				hisha0b();
+			} else if (koma == 'kaku0b'){
+				kaku0b();
+			} else if (koma == 'hu0b'){
+					hu0b();
+			} 
+		} else if (turn==1){//王側
+			if (koma=='kyousha1a'){
+				kyousha1a();
+			} else if (koma == 'keima1a' ){	
+				keima1a();
+			} else if (koma == 'gin1a' ){	
+				gin1a();
+			} else if (koma == 'kin1'){
+				kin1();
+			} else if (koma == 'ou1'){
+				ou1();
+			} else if (koma == 'hisha1a'){
+				hisha1a();
+			} else if (koma == 'kaku1a'){
+				kaku1a();
+			} else if (koma == 'hu1a'){
+				hu1a();
+			} else if (koma=='kyousha1b'){
+				kyousha1b();
+			} else if (koma == 'keima1b' ){	
+				keima1b();
+			} else if (koma == 'gin1b' ){	
+				gin1b();
+			} else if (koma == 'hisha1b'){
+				hisha1b();
+			} else if (koma == 'kaku1b'){
+				kaku1b();
+			} else if (koma == 'hu1b'){
+				hu1b();
+			} 
+		}
+	}
+})
+
+$('#tbody-box1').on('click','img',function(){
+	if ($(this).parents('td').css('background-color')!='rgb(153, 217, 234)'){//背景が青でない、移動元の駒
+		koma = $(this).attr('title');//駒名
+		komatable = $(this).parents('table').attr('id');//駒の位置はboxかboardか
+		
+		if (komatable == 'tbody-board'){//board上の駒、駒の移動ルールに従い移動する
+			a = $('#tbody-board tr').index($(this).parents('tr'));//段
+			b = $('#tbody-board tr:eq('+a+') td').index($(this).parents('td'));//筋
+			komalocation = $('#tbody-board tr:eq('+a+') td:eq('+b+')');
+		}
+		
+		
+		$('td').css('background','rgb(239, 228, 176)');//前まで変えた背景色を全部リセット
+		$(this).parents('td').css('background','rgb(237, 28, 36)');//クリックした駒の背景を赤に
+		
+		if (turn==0){//玉側
+			if (koma=='kyousha0a'){
+				kyousha0a();
+			} else if (koma == 'keima0a' ){	
+				keima0a();
+			} else if (koma == 'gin0a' ){	
+				gin0a();
+			} else if (koma == 'kin0'){
+				kin0();
+			} else if (koma == 'ou0'){
+				ou0();
+			} else if (koma == 'hisha0a'){
+				hisha0a();
+			} else if (koma == 'kaku0a'){
+				kaku0a();
+			} else if (koma == 'hu0a'){
+				hu0a();
+			} else if (koma=='kyousha0b'){
+				kyousha0b();
+			} else if (koma == 'keima0b' ){	
+				keima0b();
+			} else if (koma == 'gin0b' ){	
+				gin0b();
+			} else if (koma == 'hisha0b'){
+				hisha0b();
+			} else if (koma == 'kaku0b'){
+				kaku0b();
+			} else if (koma == 'hu0b'){
+					hu0b();
+			} 
+		} else if (turn==1){//王側
+			if (koma=='kyousha1a'){
+				kyousha1a();
+			} else if (koma == 'keima1a' ){	
+				keima1a();
+			} else if (koma == 'gin1a' ){	
+				gin1a();
+			} else if (koma == 'kin1'){
+				kin1();
+			} else if (koma == 'ou1'){
+				ou1();
+			} else if (koma == 'hisha1a'){
+				hisha1a();
+			} else if (koma == 'kaku1a'){
+				kaku1a();
+			} else if (koma == 'hu1a'){
+				hu1a();
+			} else if (koma=='kyousha1b'){
+				kyousha1b();
+			} else if (koma == 'keima1b' ){	
+					keima1b();
+			} else if (koma == 'gin1b' ){	
+				gin1b();
+			} else if (koma == 'hisha1b'){
+				hisha1b();
+			} else if (koma == 'kaku1b'){
+				kaku1b();
+			} else if (koma == 'hu1b'){
+				hu1b();
+			} 
+		}
+	}
+})
