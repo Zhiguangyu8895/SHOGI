@@ -301,3 +301,129 @@ $('#tbody-box1').on('click','img',function(){
 		}
 	}
 })
+
+//駒の動き
+//香車
+function kyousha0a(){
+	if (komatable=='tbody-box0'){//駒はbox0にある
+	for (var i=1; i<9; i++) {
+				$('#tbody-board tr:eq('+i+') td:not(:has(img))').css('background','rgb(153, 217, 234)');
+		}
+	} else if (komatable == 'tbody-board'){//駒はboardにある
+		//動ける位置
+			for (var i=0; i<a; i++ ){
+				if($('#tbody-board tr:eq('+(a-1-i)+') td:eq('+b+')').children('img').length==0){
+					$('#tbody-board tr:eq('+(a-1-i)+') td:eq('+b+')').css('background','rgb(153, 217, 234)');
+				} else if (koma0.indexOf($('#tbody-board tr:eq('+(a-1-i)+') td:eq('+b+')').children('img').attr('title'))!=-1){//自分の駒
+					break;
+				} else if (koma0.indexOf($('#tbody-board tr:eq('+(a-1-i)+') td:eq('+b+')').children('img').attr('title'))==-1){//相手の駒
+					$('#tbody-board tr:eq('+(a-1-i)+') td:eq('+b+')').css('background','rgb(153, 217, 234)');
+					break;
+				}
+			}
+	}
+}
+
+//成香
+function kyousha0b(){
+	//動ける位置
+	if (a!=0&&b!=0){
+		komacheck = [
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+(b-1)+')'),
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+b+')'),
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b-1)+')'),
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a+1)+') td:eq('+b+')')
+			];
+	} else if (a!=0&&b==0){
+		komacheck = [
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+b+')'),
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a+1)+') td:eq('+b+')')
+			];
+	} else if (a==0&&b!=0){
+		komacheck = [
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b-1)+')'),
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a+1)+') td:eq('+b+')')
+			];
+	} else if (a==0&&b==0){
+		komacheck = [
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a+1)+') td:eq('+b+')')
+			];
+	}
+	
+	for (var i=0; i<komacheck.length; i++){
+		if((komacheck[i].children('img').length==0)||koma0.indexOf(komacheck[i].children('img').attr('title'))==-1){
+			komacheck[i].css('background','rgb(153, 217, 234)');
+		} 
+	}
+}	
+	
+//桂馬
+function keima0a(){
+	if (komatable=='tbody-box0'){//駒はbox0にある
+	for (var i=2; i<9; i++) {
+				$('#tbody-board tr:eq('+i+') td:not(:has(img))').css('background','rgb(153, 217, 234)');
+		}
+	} else if (komatable == 'tbody-board'){//駒はboardにある
+
+		//動ける位置
+		if (b!=0){
+			komacheck = [
+			$('#tbody-board tr:eq('+(a-2)+') td:eq('+(b-1)+')'),
+			$('#tbody-board tr:eq('+(a-2)+') td:eq('+(b+1)+')')
+			];
+		} else {
+			komacheck = [$('#tbody-board tr:eq('+(a-2)+') td:eq('+(b+1)+')')]
+		}
+		
+		for (var i=0; i<komacheck.length; i++){
+			if((komacheck[i].children('img').length==0)||koma0.indexOf(komacheck[i].children('img').attr('title'))==-1){
+				komacheck[i].css('background','rgb(153, 217, 234)');
+			} 
+		}
+	}
+}
+
+//成桂
+function keima0b(){
+	//動ける位置
+	if (a!=0&&b!=0){
+		komacheck = [
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+(b-1)+')'),
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+b+')'),
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b-1)+')'),
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a+1)+') td:eq('+b+')')
+			];
+	} else if (a!=0&&b==0){
+		komacheck = [
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+b+')'),
+			$('#tbody-board tr:eq('+(a-1)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a+1)+') td:eq('+b+')')
+			];
+	} else if (a==0&&b!=0){
+		komacheck = [
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b-1)+')'),
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a+1)+') td:eq('+b+')')
+			];
+	} else if (a==0&&b==0){
+		komacheck = [
+			$('#tbody-board tr:eq('+(a)+') td:eq('+(b+1)+')'),
+			$('#tbody-board tr:eq('+(a+1)+') td:eq('+b+')')
+			];
+	}
+	
+	for (var i=0; i<komacheck.length; i++){
+		if((komacheck[i].children('img').length==0)||koma0.indexOf(komacheck[i].children('img').attr('title'))==-1){
+			komacheck[i].css('background','rgb(153, 217, 234)');
+		} 
+	}
+}	
