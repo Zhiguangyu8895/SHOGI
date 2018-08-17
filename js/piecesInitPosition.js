@@ -1,6 +1,8 @@
 /**
- * Add SHOGI pieces to initial postions
+ * This file add SHOGI pieces to initial postions
  */
+
+//on the SHOGI board
 $('#tbody-board tr:eq(0) td:eq(0)').append('<img title=\"kyousha1a\" src=\"img\\kyousha1a.png\">');
 $('#tbody-board tr:eq(0) td:eq(1)').append('<img title=\"keima1a\" src=\"img\\keima1a.png\">');
 $('#tbody-board tr:eq(0) td:eq(2)').append('<img title=\"gin1a\" src=\"img\\gin1a.png\">');
@@ -18,7 +20,6 @@ for (var i=0;i<9;i++){
 	$('#tbody-board tr:eq(2) td:eq('+i+')').append('<img title=\"hu1a\" src=\"img\\hu1a.png\">');
 }
 
-
 $('#tbody-board tr:eq(8) td:eq(0)').append('<img title=\"kyousha0a\" src=\"img\\kyousha0a.png\">');
 $('#tbody-board tr:eq(8) td:eq(1)').append('<img title=\"keima0a\" src=\"img\\keima0a.png\">');
 $('#tbody-board tr:eq(8) td:eq(2)').append('<img title=\"gin0a\" src=\"img\\gin0a.png\">');
@@ -35,3 +36,5 @@ $('#tbody-board tr:eq(7) td:eq(1)').append('<img title=\"kaku0a\" src=\"img\\kak
 for (var i=0;i<9;i++){
 	$('#tbody-board tr:eq(6) td:eq('+i+')').append('<img title=\"hu0a\" src=\"img\\hu0a.png\">');
 }
+
+//on the tsumi SHOGI board
