@@ -24,6 +24,7 @@ var ta,tb;//取られる駒の段筋
 var komaget;//boxに入れる駒
 var komacheck = [];//駒が行けるマス、配列
 var basertable;//詰んできた駒の元のtable
+var count = 0;
 
 //駒がクリックされたら
 
