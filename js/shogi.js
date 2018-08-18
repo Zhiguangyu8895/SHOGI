@@ -1734,7 +1734,7 @@ $('#tbody-board').on('click','td',function(){
 				
 				
 				//履歴記録
-				var checkhistoryid = alasql('SELECT * FROM CSV("history.csv", {headers:false, quote:"\'",separator:","})') WHERE id = ?',[count]);
+				var checkhistoryid = alasql('SELECT * FROM CSV("history.csv", {headers:false, quote:"\'",separator:","}) WHERE id = ?',[count]);
 				
 				
 				if (checkhistoryid.length == 0){
@@ -1801,7 +1801,7 @@ $('#tbody-board').on('click','td',function(){
 				
 				
 				//履歴記録
-				var checkhistoryid = alasql('SELECT * FROM CSV("history.csv", {headers:false, quote:"\'",separator:","})') WHERE id = ?',[count]);
+				var checkhistoryid = alasql('SELECT * FROM CSV("history.csv", {headers:false, quote:"\'",separator:","}) WHERE id = ?',[count]);
 				
 				
 				if (checkhistoryid.length == 0){
@@ -1933,7 +1933,7 @@ $('#tbody-board').on('click','td',function(){
 
 //beforeボタン
 before = function (){
-	var bhistorys = alasql('SELECT * FROM CSV("history.csv", {headers:false, quote:"\'",separator:","})') WHERE id = ?', [ parseInt(count)-1 ]);
+	var bhistorys = alasql('SELECT * FROM CSV("history.csv", {headers:false, quote:"\'",separator:","}) WHERE id = ?', [ parseInt(count)-1 ]);
 	var bkoma = bhistorys[0].koma;
 	var bra = bhistorys[0].ra;
 	var brb = bhistorys[0].rb;
@@ -2023,7 +2023,7 @@ before = function (){
 
 //afterボタン
 after = function (){
-	var ahistorys = alasql('SELECT * FROM CSV("history.csv", {headers:false, quote:"\'",separator:","})') WHERE id = ?', [ parseInt(count) ]);
+	var ahistorys = alasql('SELECT * FROM CSV("history.csv", {headers:false, quote:"\'",separator:","}) WHERE id = ?', [ parseInt(count) ]);
 	var akoma = ahistorys[0].koma;
 	var ara = ahistorys[0].ra;
 	var arb = ahistorys[0].rb;
@@ -2110,7 +2110,7 @@ after = function (){
 	}	
 	
 	//max after disabled
-	if ($('#count').val() == alasql('SELECT MAX(id) AS id FROM CSV("history.csv", {headers:false, quote:"\'",separator:","})') ')[0].id+1){
+	if ($('#count').val() == alasql('SELECT MAX(id) AS id FROM CSV("history.csv", {headers:false, quote:"\'",separator:","}) ')[0].id+1){
 		$('#after').attr('disabled',true);
 	} else {
 		$('#after').attr('disabled',false);
