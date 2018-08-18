@@ -1,4 +1,7 @@
-﻿//駒の配列
+﻿//alasql history table to record 
+alasql("CREATE TABLE history (id INT, koma STRING, ra STRING, rb STRING, ta STRING, tb STRING, change STRING, komataked STRING, boxname STRING, uboxname STRING)");
+
+//駒の配列
 //玉側の駒
 var koma0=['kyousha0a','keima0a','gin0a','kin0','ou0','hisha0a','kaku0a','hu0a','kyousha0b','keima0b','gin0b','hisha0b','kaku0b','hu0b'];
 //成る
